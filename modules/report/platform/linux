@@ -18,11 +18,12 @@ function get_images {
 	streamer=`which streamer`
 	if [ -n "$streamer" ]; then
 
-		$streamer -o /tmp/imagen.jpeg &> /dev/null # streamer necesita que sea JPEG (con la E) para detectar el formato
+		$streamer -t 4 -r 2 -o /tmp/imagen00.jpeg &> /dev/null # streamer necesita que sea JPEG (con la E) para detectar el formato
 
-		if [ -e '/tmp/imagen.jpeg' ]; then
+		if [ -e '/tmp/imagen03.jpeg' ]; then
 
-			mv /tmp/imagen.jpeg $picture > /dev/null
+			mv /tmp/imagen03.jpeg $picture > /dev/null
+			rm /tmp/imagen00.jpeg /tmp/imagen01.jpeg /tmp/imagen02.jpeg
 
 		else # by Vanscot, http://www.hometown.cl/ --> some webcams are unable to take JPGs so we grab a PPM
 
